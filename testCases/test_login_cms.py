@@ -31,8 +31,12 @@ class Test_001_Login:
         self.lp.clickLogin()
         act_title = self.driver.title
         print(act_title)
-        self.driver.close()
+        # Driver close yang buat error no dession ID, ini buat session jadi hilang
+        # self.driver.close()
         if act_title == '62 Trade':
+            self.driver.implicitly_wait(20)
+            self.lp.clickSalesOrder()
             assert True
         else:
             assert False
+
