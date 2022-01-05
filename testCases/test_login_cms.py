@@ -28,7 +28,7 @@ class Test_001_Login:
         self.driver.get(self.baseUrl)
         self.driver.implicitly_wait(10)
         self.lp = LoginPage(self.driver)
-        self.lp.setUserName(self.username_seller)
+        self.lp.setUserName(self.username_admin)
         self.lp.setPassword(self.password)
         self.lp.clickLogin()
         act_title = self.driver.title
@@ -37,11 +37,15 @@ class Test_001_Login:
         # self.driver.close()
         if act_title == '62 Trade':
             self.driver.implicitly_wait(20)
-            self.lp.clickSalesOrder()
+            self.lp.clickSOAcceptFWD()
+
+            # self.lp.clickSidebarMenu()
+            # self.lp.clickRFQ()
+            # self.lp.clickSalesOrder()
             # self.lp.clickAcceptOrder()
             # self.lp.clickAcceptOrderForwarder()
-            self.lp.clickEditProformaInvoice()
-            self.lp.clickChooseShippingMode()
+            # self.lp.clickEditProformaInvoice()
+            # self.lp.clickChooseShippingMode()
             assert True
         else:
             assert False
