@@ -36,6 +36,7 @@ class LoginPage:
     notes_name = 'notes'
     button_confirm_rfq_name = 'confirm_rfq'
     button_submit_rfq_xpath = '//span[text()="Ok"]'
+    status_seller_name = 'so_status_seller'
 
     def __init__(self, driver):
         self.driver = driver
@@ -88,7 +89,7 @@ class LoginPage:
         self.driver.find_element_by_name(self.notes_name).send_keys('Testing Notes')
         self.driver.find_element_by_name(self.button_confirm_rfq_name).click()
         self.driver.find_element_by_xpath(self.button_submit_rfq_xpath).click()
-
+        # self.driver.find_element_by_name(self.status_seller_name).getAttribute('innerText')
         # buat kondisi address ilang atau nggk
         # print(self.driver.find_element_by_name(self.address_name).get_attribute('innerText'))
 
