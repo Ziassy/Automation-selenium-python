@@ -57,10 +57,34 @@ class LoginPage:
     btn_approve_ok_xpath = '//span[text()="Ok"]'
     sale_status_admin = 'so_status_admin'
 
+    # Login buyer web
+    btn_login_page_xpath = '//button[text()="Login"]'
+    input_username_name = 'login'
+    input_password_name = 'password'
+    checkbox1 = "recaptcha-checkbox-border"
+    btn_login_name = 'btn-login'
+    btn_login_xpath = "//button[contains(.,'Log In')]"
+
 
     def __init__(self, driver):
         self.driver = driver
         self.driver.maximize_window()
+    # Buyer login
+    def clickBtnLogin(self):
+        self.driver.find_element(By.XPATH, self.btn_login_page_xpath).click()
+        self.driver.find_element(By.NAME, self.input_username_name).send_keys('fauziahfz216@gmail.com')
+        self.driver.find_element(By.NAME, self.input_password_name).send_keys('Sinergi01!')
+        time.sleep(5)
+        # fix click checkbox using witch to frame
+        self.driver.switch_to.frame(0)
+        self.driver.find_element(By.CLASS_NAME, self.checkbox1).click()
+        time.sleep(3)
+        # Setelah switch frame, kembaliin lagi ke default content biar elementnnya ke define
+        self.driver.switch_to.default_content()
+        self.driver.find_element(By.XPATH, self.btn_login_xpath).click()
+        # self.driver.find_element(By.NAME, self.btn_login_name).click()
+
+
 
     def setUserName(self, username):
         self.driver.find_element_by_id(
